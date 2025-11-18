@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>sfsite</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>박지웅</h1>
+  <p class="subtitle">hi.</p>
+</header>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="portfolio.html">Portfolio</a>
+  <a href="contact.html">Contact</a>
+</nav>
+<main class="container">
+<section>
+  <h2>메뉴 랜덤 선택</h2>
+  <p>입력된 메뉴중 랜덤한 하나를 선택해 드립니다.</p>
+  <h3>rand.</h3>
+  <hr>
+  <script>
+    let inputMenu = prompt("항목을 ,로 구분해 입력하세요.", "물");
+    if (!inputMenu) {
+      document.write("Canceled.");
+    } else {
+      let item = inputMenu.split(",");
+      let val = Math.floor(Math.random() * item.length);
+
+      document.write("<p>" + inputMenu + "</p>");
+      document.write("<h3>메뉴 " + item.length + "개 중</h3>");
+      document.write("<h2>선택된 메뉴는..</h2>");
+      document.write("<hr>")
+      
+      let ans = item[val].trim();
+      document.write("<h3>" + ans + "입니다.</h3>");
+      document.write("<p><i>페이지를 새로고침하여 다시 선택할 수 있습니다.</i></p>");
+    }
+  </script>
+</section>
+</main>
+<footer>
+  <small>&copy; <span id="year"></span> B-Seolhwa</small>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
