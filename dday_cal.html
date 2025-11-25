@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>sfsite</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <h1>박지웅</h1>
+    <p class="subtitle">hi.</p>
+  </header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <main class="container">
+    <section>
+      <h2>D-Day 계산기</h2>
+      <p>D-Day로부터 오늘까지의 차이를 계산합니다.</p>
+      <hr>
+      <h3>Cal.</h3>
+      <script>
+        let now = new Date();
+        let year = prompt("목표 연도를 입력 (ex. 2025): ", now.getFullYear());
+        let month = prompt("목표 월을 입력 (ex. 1): ", now.getMonth() + 1);
+        let day = prompt("목표 일을 입력 (ex. 23): ", now.getDate());
+        if (!year || !month || !day) {
+          document.write("<h3>Canceled.</h3>");
+        } else if (year < 0 || month < 1 || month > 12 || day < 1 || day > 31) {
+          document.write("<h3>올바른 값을 입력해 주세요.</h3>");
+        } else {
+          let targetDate = new Date(year, month - 1, day);
+
+          let diffMs = targetDate.getTime() - now.getTime();
+          let diffDay = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+
+          document.write("<h3>목표 날짜: " + targetDate.toLocaleString() + "</h3>");
+
+          if (diffDay == 0) {
+            document.write("<h3> D-Day 입니다.</h3>");
+          } else if (diffDay > 0) {
+            document.write("<h3> D-" + diffDay + "일 입니다.</h3>");
+          } else {
+            document.write("<h3> D+" + Math.abs(diffDay-1) + "일 입니다.</h3>");
+          }
+
+          document.write("<hr>");
+          document.write("<p>오늘 날짜: " + now.toLocaleString() + "</p>");
+          document.write("<p><i>페이지를 새로고침하여 다시 계산할 수 있습니다.</i></p>");
+        }
+      </script>
+    </section>
+  </main>
+  <footer>
+    <small>&copy; <span id="year"></span> B-Seolhwa</small>
+  </footer>
+  <script src="script.js"></script>
+</body>
+
+</html>

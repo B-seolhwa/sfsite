@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>sfsite</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    #target {
+      font-size: 20px;
+      font-weight: bold;
+      padding: 20px;
+      border: 2px solid #ccc;
+      margin: 20px auto;
+      width: 80%;
+      transition: all 0.3s;
+    }
+
+    button {
+      color: black;
+      padding: 10px 15px;
+      font-size: 16px;
+      margin: 5px;
+      margin-top: 15px;
+      cursor: pointer;
+      background-color: #eee;
+      border: 1px solid #999;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: #ddd;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>박지웅</h1>
+    <p class="subtitle">hi.</p>
+  </header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <main class="container">
+    <section>
+      <h2>DOM 동적 스타일 변화</h2>
+
+      <br><hr><br>
+
+      <script>
+        var sTg = 0;
+        var bTg = 0;
+
+        function changeColor() {
+          var obj = document.getElementById("target");
+          if (obj.style.color == "red") {
+            obj.style.color = "green";
+          } else if (obj.style.color == "green") {
+            obj.style.color = "blue";
+          } else {
+            obj.style.color = "red";
+          }
+        }
+
+
+        function changeSize() {
+          var obj = document.getElementById("target");
+          if (sTg == 0) {
+            obj.style.fontSize = "32px";
+            sTg = 1;
+          } else {
+            obj.style.fontSize = "20px";
+            sTg = 0;
+          }
+        }
+
+
+        function changeBackground() {
+          var obj = document.getElementById("target");
+          if (bTg == 0) {
+            obj.style.backgroundColor = "yellow";
+            bTg = 1;
+          } else {
+            obj.style.backgroundColor = "white";
+            bTg = 0;
+          }
+        }
+
+
+        function toggleVisibility() {
+          var obj = document.getElementById("target");
+
+
+          if (obj.style.opacity === "0") {
+            obj.style.opacity = "1.0";
+          } else {
+            obj.style.opacity = "0";
+          }
+        }
+      </script>
+      <p id="target">textT</p>
+      <br>
+
+      <button onclick="changeColor()">text color</button>
+      <button onclick="changeSize()">text scale</button>
+      <button onclick="changeBackground()">background color</button>
+      <button onclick="toggleVisibility()">visibility</button>
+    </section>
+  </main>
+  <footer>
+    <small>&copy; <span id="year"></span> B-Seolhwa</small>
+  </footer>
+  <script src="script.js"></script>
+</body>
+
+</html>
